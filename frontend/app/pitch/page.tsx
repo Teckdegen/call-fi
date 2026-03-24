@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 
-const slides = ["cover","intro","what","why","features","demo"];
+const slides = ["cover","intro","what","problem","why","features","demo"];
 const totalSlides = slides.length;
 
 export default function PitchDeck() {
@@ -50,9 +50,10 @@ export default function PitchDeck() {
         {current === 0 && <SlideCover    onStart={next} />}
         {current === 1 && <SlideIntro />}
         {current === 2 && <SlideWhat />}
-        {current === 3 && <SlideWhy />}
-        {current === 4 && <SlideFeatures />}
-        {current === 5 && <SlideDemo />}
+        {current === 3 && <SlideProblem />}
+        {current === 4 && <SlideWhy />}
+        {current === 5 && <SlideFeatures />}
+        {current === 6 && <SlideDemo />}
       </div>
 
       <div style={{
@@ -160,9 +161,10 @@ function SlideIntro() {
             {[
               { n:"01", text:"What is CALLFI" },
               { n:"02", text:"What We Are" },
-              { n:"03", text:"Why Somnia" },
-              { n:"04", text:"Features" },
-              { n:"05", text:"Demo" },
+              { n:"03", text:"The Problem We Solve" },
+              { n:"04", text:"Why Somnia" },
+              { n:"05", text:"Features" },
+              { n:"06", text:"Demo" },
             ].map(item => (
               <div key={item.n} style={{ display:"flex", gap:10, alignItems:"flex-start", padding:"6px 0", borderBottom:"1px solid rgba(10,10,10,0.06)" }}>
                 <span style={{ fontFamily:"var(--font-mono)", fontSize:9, color:"var(--ink-soft)", letterSpacing:"0.1em", flexShrink:0, marginTop:2 }}>{item.n}</span>
@@ -193,7 +195,56 @@ function SlideWhat() {
   );
 }
 
-/* SLIDE 4: WHY SOMNIA */
+/* SLIDE 4: PROBLEM */
+function SlideProblem() {
+  return (
+    <div style={{ maxWidth:720, width:"100%" }}>
+      <Label>03 The Problem We Solve</Label>
+      <H2>Every calling app today<br/>relies on a server.</H2>
+      <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(11px,1.3vw,13px)", color:"var(--ink-soft)", lineHeight:1.7, marginTop:12, maxWidth:580 }}>
+        To make a call, traditional apps need to verify who you are, route the connection between two people, and deliver the signal in real time. That requires a server sitting in the middle. Which means you need an account, a phone number, or an email tied to their platform just to be reachable.
+      </p>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, marginTop:16 }}>
+        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(12px,1.8vh,20px) clamp(12px,1.6vw,22px)", background:"rgba(10,10,10,0.03)" }}>
+          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>Traditional Apps</p>
+          <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
+            {[
+              "You need a phone number or email to be reachable",
+              "A server connects you to the other person",
+              "The company knows who you call and when",
+              "Your identity lives on their platform, not yours",
+              "They can shut down your account or access at any time",
+            ].map(t => (
+              <div key={t} style={{ display:"flex", gap:10, alignItems:"flex-start" }}>
+                <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"#b91c1c", flexShrink:0, marginTop:1 }}>x</span>
+                <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.5 }}>{t}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div style={{ border:"2px solid var(--ink)", padding:"clamp(12px,1.8vh,20px) clamp(12px,1.6vw,22px)" }}>
+          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>CALLFI</p>
+          <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
+            {[
+              "Your wallet address is your identity, nothing else needed",
+              "The blockchain connects you, no server in the middle",
+              "No company can see your call history or who you contact",
+              "Your identity is on-chain, it belongs to you",
+              "No one can shut down your access or take it away",
+            ].map(t => (
+              <div key={t} style={{ display:"flex", gap:10, alignItems:"flex-start" }}>
+                <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"#1a6b3a", flexShrink:0, marginTop:1 }}>o</span>
+                <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink)", lineHeight:1.5 }}>{t}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* SLIDE 5: WHY SOMNIA */
 function SlideWhy() {
   return (
     <div style={{ maxWidth:720, width:"100%" }}>
