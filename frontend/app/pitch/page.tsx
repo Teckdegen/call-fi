@@ -158,15 +158,11 @@ function SlideIntro() {
           </h2>
           <div style={{ display:"flex", flexDirection:"column", gap:6, marginTop:4 }}>
             {[
-              { n:"01", text:"What CALLFI is and the problem it solves" },
-              { n:"02", text:"Why Somnia Reactivity makes this possible" },
-              { n:"03", text:"Connecting your wallet as your identity" },
-              { n:"04", text:"Making a live voice and video call" },
-              { n:"05", text:"The other device ringing in under 2 seconds" },
-              { n:"06", text:"Accepting the call, going peer-to-peer" },
-              { n:"07", text:"Sending a payment mid-call on-chain" },
-              { n:"08", text:"On-chain call history, permanent and verifiable" },
-              { n:"09", text:"Missed call recovery within 3 minutes" },
+              { n:"01", text:"What is CALLFI" },
+              { n:"02", text:"What We Are" },
+              { n:"03", text:"Why Somnia" },
+              { n:"04", text:"Features" },
+              { n:"05", text:"Demo" },
             ].map(item => (
               <div key={item.n} style={{ display:"flex", gap:10, alignItems:"flex-start", padding:"6px 0", borderBottom:"1px solid rgba(10,10,10,0.06)" }}>
                 <span style={{ fontFamily:"var(--font-mono)", fontSize:9, color:"var(--ink-soft)", letterSpacing:"0.1em", flexShrink:0, marginTop:2 }}>{item.n}</span>
