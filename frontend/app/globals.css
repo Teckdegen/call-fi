@@ -1,0 +1,85 @@
+/* ============================================================
+   SOMNIA CALL — Encrypted Fi Design Language
+   Cream #E7E2D9 · Ink #0A0A0A · White #FFF
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:      #E7E2D9;
+  --cream-mid:  #D4CECC;
+  --cream-dark: #B8B3AF;
+  --ink:        #0A0A0A;
+  --ink-soft:   rgba(10,10,10,0.55);
+  --ink-faint:  rgba(10,10,10,0.08);
+  --white:      #FFFFFF;
+  --green:      #1a6b3a;
+  --green-bg:   #e6f4ec;
+  --red:        #b91c1c;
+  --red-bg:     #fde8e8;
+
+  --border:     1px solid rgba(10,10,10,0.14);
+  --border-ink: 2px solid #0A0A0A;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Space Grotesk', 'Helvetica Neue', sans-serif;
+  --font-mono:  'Space Mono', 'Courier New', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+button { cursor: pointer; border: none; outline: none; font-family: var(--font-sans); }
+input  { outline: none; font-family: var(--font-mono); }
+a      { text-decoration: none; color: inherit; }
+
+::selection { background: var(--ink); color: var(--cream); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(10,10,10,0.2); border-radius: 2px; }
+
+/* ── Animations ── */
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0   rgba(10,10,10,0.18); }
+  70%  { box-shadow: 0 0 0 24px rgba(10,10,10,0);   }
+  100% { box-shadow: 0 0 0 0   rgba(10,10,10,0);    }
+}
+
+@keyframes pulse-ring-green {
+  0%   { box-shadow: 0 0 0 0   rgba(26,107,58,0.4); }
+  70%  { box-shadow: 0 0 0 28px rgba(26,107,58,0);  }
+  100% { box-shadow: 0 0 0 0   rgba(26,107,58,0);   }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes dial-ring {
+  0%, 100% { transform: rotate(-6deg); }
+  50%       { transform: rotate(6deg);  }
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.slide-up { animation: slide-up 0.3s cubic-bezier(0.22,1,0.36,1) both; }
+.fade-in  { animation: fade-in  0.2s ease both; }

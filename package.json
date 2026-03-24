@@ -1,0 +1,22 @@
+{
+  "name": "callfi-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "wallet":        "node scripts/generate-wallet.js",
+    "compile":       "hardhat compile",
+    "deploy:somnia": "hardhat run scripts/deploy.js --network somnia",
+    "deploy:local":  "hardhat run scripts/deploy.js --network localhost",
+    "node":          "hardhat node",
+    "test":          "hardhat test"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.0",
+    "dotenv":  "^16.0.0",
+    "ethers":  "^6.0.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0"
+  }
+}
