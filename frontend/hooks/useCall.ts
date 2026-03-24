@@ -98,12 +98,13 @@ export function useCall(myAddress?: `0x${string}`) {
           const { callId, caller, signalOffer } = (log as any).args;
 
           // Ask the contract — is this call still Pending?
-          const call = await publicClient.readContract({
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const call = await (publicClient as any).readContract({
             address:      CALLFI_ADDRESS,
             abi:          CALLFI_ABI,
             functionName: "getCall",
             args:         [callId],
-          } as any) as any;
+          }) as any;
 
           // status 0 = Pending.  Also check it hasn't expired (> 3 min).
           if (call.status !== 0) continue;
