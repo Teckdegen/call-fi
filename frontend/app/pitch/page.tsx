@@ -204,12 +204,12 @@ function SlideWhy() {
       <Label>02 Why Somnia</Label>
       <H2>Speed is not a feature.<br/>It is the product.</H2>
       <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(11px,1.3vw,13px)", color:"var(--ink-soft)", lineHeight:1.7, marginTop:12, maxWidth:560 }}>
-        For a call to feel real, the other person has to ring in under 2 seconds. On most chains that is impossible. Your app has to wait for a block, then keep checking if anything changed. By the time the other person sees the call, the moment is gone. A calling app on those chains is not usable.
+        For a call to feel real, the other person has to ring in under 2 seconds. On most chains that is impossible. Your app has to wait for a block, then keep checking if anything changed. That alone takes 10 to 15 seconds. By the time the other person sees the call, the moment is gone. A calling app on those chains is not usable.
       </p>
       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, marginTop:14 }}>
         <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(12px,1.8vh,18px) clamp(12px,1.4vw,18px)", background:"rgba(10,10,10,0.03)" }}>
           <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:8 }}>Other Chains</p>
-          <p style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(20px,2.8vw,30px)", fontWeight:900, color:"#b91c1c", marginBottom:6 }}>15 to 60 sec</p>
+          <p style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(20px,2.8vw,30px)", fontWeight:900, color:"#b91c1c", marginBottom:6 }}>10 to 15 sec</p>
           <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.6 }}>
             App polls the chain repeatedly waiting for the event to land. Slow block times make real-time communication completely unusable.
           </p>
