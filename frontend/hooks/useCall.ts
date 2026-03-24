@@ -103,7 +103,7 @@ export function useCall(myAddress?: `0x${string}`) {
             abi:          CALLFI_ABI,
             functionName: "getCall",
             args:         [callId],
-          }) as any;
+          } as any) as any;
 
           // status 0 = Pending.  Also check it hasn't expired (> 3 min).
           if (call.status !== 0) continue;
