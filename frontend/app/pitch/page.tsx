@@ -308,30 +308,31 @@ function SlideFeatures() {
 /* SLIDE 6: DEMO */
 function SlideDemo() {
   return (
-    <div style={{ maxWidth:780, width:"100%", textAlign:"center" }}>
-      <Label>04 Demo</Label>
-      <H2>See it live.</H2>
-      <p style={{ fontFamily:"var(--font-sans)", fontSize:13, color:"var(--ink-soft)", marginTop:8, marginBottom:18 }}>
-        Two wallets. Two transactions. One call.
-      </p>
+    <div style={{ width:"100%", maxWidth:"100%", height:"100%", display:"flex", flexDirection:"column", gap:10, padding:"0 2vw" }}>
+      <div style={{ display:"flex", alignItems:"baseline", justifyContent:"space-between", flexShrink:0 }}>
+        <div>
+          <Label>04 Demo</Label>
+          <H2>See it live.</H2>
+        </div>
+        <p style={{ fontFamily:"var(--font-mono)", fontSize:11, color:"var(--ink-soft)", letterSpacing:"0.06em" }}>
+          Live on Somnia Testnet
+        </p>
+      </div>
       <div style={{
-        width:"100%", aspectRatio:"16/9", background:"var(--ink)", borderRadius:2,
+        flex:1, width:"100%", background:"var(--ink)", borderRadius:2,
         display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden",
-        maxHeight:"55vh",
+        minHeight:0,
       }}>
         {/* Replace with: <iframe src="YOUR_EMBED_URL" width="100%" height="100%" frameBorder="0" allowFullScreen /> */}
-        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:12 }}>
-          <div style={{ width:52, height:52, borderRadius:"50%", border:"2px solid rgba(231,226,217,0.3)", display:"flex", alignItems:"center", justifyContent:"center" }}>
-            <svg width={20} height={20} viewBox="0 0 24 24" fill="var(--cream)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:16 }}>
+          <div style={{ width:64, height:64, borderRadius:"50%", border:"2px solid rgba(231,226,217,0.3)", display:"flex", alignItems:"center", justifyContent:"center" }}>
+            <svg width={26} height={26} viewBox="0 0 24 24" fill="var(--cream)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </div>
-          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"rgba(231,226,217,0.4)", letterSpacing:"0.1em" }}>
-            DEMO VIDEO PASTE EMBED URL
+          <p style={{ fontFamily:"var(--font-mono)", fontSize:11, color:"rgba(231,226,217,0.4)", letterSpacing:"0.12em", textTransform:"uppercase" }}>
+            Paste embed URL to show demo video
           </p>
         </div>
       </div>
-      <p style={{ fontFamily:"var(--font-mono)", fontSize:11, color:"var(--ink-soft)", marginTop:14, letterSpacing:"0.06em" }}>
-        Live on Somnia Testnet
-      </p>
     </div>
   );
 }
