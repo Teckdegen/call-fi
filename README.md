@@ -161,18 +161,18 @@ When the peer connection is established:
 
 This means: Somnia nodes, ISPs, anyone on the network path between the two browsers — none of them can hear or see the call audio or video. The content is encrypted between your browser and the other person's browser only. No third party holds the keys.
 
-### Signaling — NOT encrypted (public on-chain)
+### Signaling — Encrypted before going on-chain
 
-The WebRTC SDP strings — the offer and the answer — are written on-chain as plain text strings in `initiateCall` and `acceptCall`. Anyone can read them from the blockchain.
+The WebRTC SDP strings — the offer and the answer — are encrypted in the browser using the receiver's public key before being submitted on-chain. Only the receiver's wallet can decrypt them.
 
 The SDP contains:
 - Codec preferences (opus for audio, H.264/VP8 for video)
 - ICE candidates (your public IP addresses and ports for NAT traversal)
 - The DTLS certificate fingerprint
 
-Importantly, the SDP does NOT contain the media encryption keys. The SRTP keys are generated during the DTLS handshake after the SDP is exchanged. Knowing someone's SDP fingerprint doesn't let you decrypt their audio — you'd need to be an active man-in-the-middle during the DTLS handshake, and both browsers verify the fingerprint from the SDP against the live certificate, which detects tampering.
+Before any of that hits the chain, it is encrypted using the receiver's Ethereum public key via `eciesjs`. The encrypted blob is what gets stored on-chain — it looks like random bytes to everyone else. Only the intended receiver can decrypt it using their private key locally in the browser.
 
-However: your IP addresses are in the SDP, and those are public on-chain.
+This means your IP addresses and connection info are never exposed publicly on-chain.
 
 ### Metadata — fully public
 
@@ -183,8 +183,8 @@ However: your IP addresses are in the SDP, and those are public on-chain.
 | Call duration | Public on-chain forever |
 | Payment amounts | Public on-chain forever |
 | Payment sender/receiver | Public on-chain forever |
-| SDP offer/answer strings | Public on-chain forever |
-| ICE candidates / IP addresses | Public on-chain forever |
+| SDP offer/answer strings | Encrypted before going on-chain |
+| ICE candidates / IP addresses | Encrypted before going on-chain |
 | Media content (audio/video) | Encrypted, peer-to-peer only |
 
 If metadata privacy matters to your use case, be aware that Call Fi does not hide it. The call record is permanent and readable by anyone.
@@ -192,7 +192,8 @@ If metadata privacy matters to your use case, be aware that Call Fi does not hid
 ### Summary
 
 Media: end-to-end encrypted via DTLS-SRTP. As private as Signal calls.
-Signaling + metadata: fully public on-chain. Permanent and readable by anyone.
+Signaling: encrypted on-chain using the receiver's public key. Only the receiver can decrypt it.
+Metadata (who called who, timestamps, duration): public on-chain. Permanent and readable by anyone.
 
 ---
 
