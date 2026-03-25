@@ -306,16 +306,16 @@ function SlideDemo() {
         </div>
         <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"rgba(231,226,217,0.4)", letterSpacing:"0.06em" }}>Live on Somnia Testnet</span>
       </div>
-      <div style={{ flex:1, width:"100%", minHeight:0, display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden" }}>
-        {/* Replace with: <iframe src="YOUR_EMBED_URL" width="100%" height="100%" frameBorder="0" allowFullScreen style={{ display:"block" }} /> */}
-        <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:16 }}>
-          <div style={{ width:72, height:72, borderRadius:"50%", border:"2px solid rgba(231,226,217,0.25)", display:"flex", alignItems:"center", justifyContent:"center" }}>
-            <svg width={28} height={28} viewBox="0 0 24 24" fill="var(--cream)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          </div>
-          <p style={{ fontFamily:"var(--font-mono)", fontSize:11, color:"rgba(231,226,217,0.35)", letterSpacing:"0.12em", textTransform:"uppercase" }}>
-            Paste embed URL to show demo video
-          </p>
-        </div>
+      <div style={{ flex:1, width:"100%", minHeight:0, overflow:"hidden" }}>
+        <iframe
+          src="https://www.youtube.com/embed/tztHujJtD1k?autoplay=0&rel=0&modestbranding=1"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{ display:"block" }}
+        />
       </div>
     </div>
   );
