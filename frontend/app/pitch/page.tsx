@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 
-const slides = ["cover","intro","what","problem","why","features","demo"];
+const slides = ["cover","intro","how","why","features","demo"];
 const totalSlides = slides.length;
 
 export default function PitchDeck() {
@@ -49,11 +49,10 @@ export default function PitchDeck() {
       }}>
         {current === 0 && <SlideCover    onStart={next} />}
         {current === 1 && <SlideIntro />}
-        {current === 2 && <SlideWhat />}
-        {current === 3 && <SlideProblem />}
-        {current === 4 && <SlideWhy />}
-        {current === 5 && <SlideFeatures />}
-        {current === 6 && <SlideDemo />}
+        {current === 2 && <SlideHow />}
+        {current === 3 && <SlideWhy />}
+        {current === 4 && <SlideFeatures />}
+        {current === 5 && <SlideDemo />}
       </div>
 
       <div style={{
@@ -120,7 +119,7 @@ function SlideCover({ onStart }: { onStart:()=>void }) {
   );
 }
 
-/* SLIDE 2: DEFINITION + VIDEO AGENDA */
+/* SLIDE 2: WHAT IS CALLFI + VIDEO AGENDA */
 function SlideIntro() {
   return (
     <div style={{ maxWidth:820, width:"100%" }}>
@@ -128,20 +127,20 @@ function SlideIntro() {
       <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, marginTop:14 }}>
 
         {/* Left: Definition */}
-        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,20px)", display:"flex", flexDirection:"column", gap:10 }}>
+        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,20px)", display:"flex", flexDirection:"column", gap:14 }}>
           <p style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:"0.12em", color:"var(--ink-soft)", textTransform:"uppercase" }}>Definition</p>
           <h2 style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(18px,2.2vw,26px)", fontWeight:900, color:"var(--ink)", lineHeight:1.2 }}>
-            A calling protocol<br/>built on the blockchain.
+            A decentralized calling platform built on Somnia.
           </h2>
           <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(11px,1.1vw,13px)", color:"var(--ink-soft)", lineHeight:1.7 }}>
-            CALLFI lets any two people make voice and video calls directly through their crypto wallets. No account. No phone number. No middleman. Your wallet address is all you need to make and receive calls from anywhere in the world.
+            CALLFI lets you call any wallet address directly. Your wallet is your identity. No sign up, no phone number, no account. Just connect your wallet and you are reachable.
           </p>
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, marginTop:4 }}>
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2 }}>
             {[
-              { tag:"Identity",    text:"Your wallet is your phone number" },
-              { tag:"Handshake",   text:"2 transactions, fully on-chain" },
-              { tag:"Privacy",     text:"Zero data collected or stored" },
-              { tag:"Media",       text:"Direct peer-to-peer, encrypted" },
+              { tag:"Identity",  text:"Your wallet is your phone number" },
+              { tag:"Handshake", text:"2 transactions, fully on-chain" },
+              { tag:"Privacy",   text:"SDP and ICE data encrypted on-chain" },
+              { tag:"Media",     text:"Peer-to-peer, DTLS-SRTP encrypted" },
             ].map(item => (
               <div key={item.tag} style={{ background:"rgba(10,10,10,0.03)", padding:"8px 10px", borderLeft:"2px solid rgba(10,10,10,0.12)" }}>
                 <p style={{ fontFamily:"var(--font-mono)", fontSize:9, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:3 }}>{item.tag}</p>
@@ -152,23 +151,22 @@ function SlideIntro() {
         </div>
 
         {/* Right: Video Agenda */}
-        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,20px)", display:"flex", flexDirection:"column", gap:10 }}>
+        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,20px)", display:"flex", flexDirection:"column", gap:14 }}>
           <p style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:"0.12em", color:"var(--ink-soft)", textTransform:"uppercase" }}>What We Cover in This Video</p>
           <h2 style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(18px,2.2vw,26px)", fontWeight:900, color:"var(--ink)", lineHeight:1.2 }}>
             Full walkthrough,<br/>start to finish.
           </h2>
-          <div style={{ display:"flex", flexDirection:"column", gap:6, marginTop:4 }}>
+          <div style={{ display:"flex", flexDirection:"column", gap:0 }}>
             {[
               { n:"01", text:"What is CALLFI" },
-              { n:"02", text:"What We Are" },
-              { n:"03", text:"The Problem We Solve" },
-              { n:"04", text:"Why Somnia" },
-              { n:"05", text:"Features" },
-              { n:"06", text:"Demo" },
+              { n:"02", text:"How the call works" },
+              { n:"03", text:"Why Somnia" },
+              { n:"04", text:"Features" },
+              { n:"05", text:"Demo" },
             ].map(item => (
-              <div key={item.n} style={{ display:"flex", gap:10, alignItems:"flex-start", padding:"6px 0", borderBottom:"1px solid rgba(10,10,10,0.06)" }}>
-                <span style={{ fontFamily:"var(--font-mono)", fontSize:9, color:"var(--ink-soft)", letterSpacing:"0.1em", flexShrink:0, marginTop:2 }}>{item.n}</span>
-                <span style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink)", lineHeight:1.5 }}>{item.text}</span>
+              <div key={item.n} style={{ display:"flex", gap:12, alignItems:"center", padding:"9px 0", borderBottom:"1px solid rgba(10,10,10,0.06)" }}>
+                <span style={{ fontFamily:"var(--font-mono)", fontSize:9, color:"var(--ink-soft)", letterSpacing:"0.1em", flexShrink:0 }}>{item.n}</span>
+                <span style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(11px,1.1vw,13px)", color:"var(--ink)", lineHeight:1.4 }}>{item.text}</span>
               </div>
             ))}
           </div>
@@ -179,99 +177,72 @@ function SlideIntro() {
   );
 }
 
-/* SLIDE 3: WHAT WE ARE */
-function SlideWhat() {
+/* SLIDE 3: HOW IT WORKS */
+function SlideHow() {
   return (
-    <div style={{ maxWidth:720, width:"100%" }}>
-      <Label>01 What We Are</Label>
-      <H2>The first on-chain<br/>calling platform.</H2>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, marginTop:18 }}>
-        <Stat value="Your Wallet"    label="is your phone number"  body="If someone has your address, they can call you. No sign up, no email, no profile to set up." />
-        <Stat value="2 Transactions" label="for a complete call"   body="One to initiate, one to answer. The blockchain handles the entire handshake." />
-        <Stat value="0 Servers"      label="in the middle"         body="No backend. No database. No company sitting between you and the person you are calling." />
-        <Stat value="E2E Encrypted"  label="peer-to-peer media"    body="DTLS-SRTP encrypted audio and video, the same standard used by Signal. Nothing leaks." />
+    <div style={{ maxWidth:780, width:"100%" }}>
+      <Label>How It Works</Label>
+      <H2>You create an event.<br/>Reactivity delivers it.</H2>
+      <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:2, marginTop:20 }}>
+        {[
+          {
+            step:"01",
+            title:"You hit call",
+            body:"Your browser creates a WebRTC offer and submits it on-chain as a transaction to the CALLFI smart contract on Somnia.",
+          },
+          {
+            step:"02",
+            title:"Somnia Reactivity fires",
+            body:"The moment that transaction lands, Somnia Reactivity pushes the event straight to the receiver's browser. No polling. No waiting. Under 2 seconds.",
+          },
+          {
+            step:"03",
+            title:"Call connects",
+            body:"The receiver accepts. Their answer goes back on-chain. Reactivity delivers it back. Two transactions. The call is live, peer-to-peer, fully encrypted.",
+          },
+        ].map(s => (
+          <div key={s.step} style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,18px)", display:"flex", flexDirection:"column", gap:10 }}>
+            <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.14em" }}>{s.step}</span>
+            <div style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(14px,1.5vw,18px)", fontWeight:900, color:"var(--ink)", lineHeight:1.2 }}>{s.title}</div>
+            <div style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.65 }}>{s.body}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ marginTop:12, padding:"clamp(10px,1.4vh,16px) clamp(12px,1.4vw,18px)", background:"rgba(10,10,10,0.04)", borderLeft:"3px solid var(--ink)", display:"flex", alignItems:"center", gap:14 }}>
+        <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", flexShrink:0 }}>No server touched</span>
+        <span style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1.1vw,12px)", color:"var(--ink)", lineHeight:1.6 }}>
+          The blockchain is the signaling layer. One contract, one WebSocket, one browser API. That is the entire stack.
+        </span>
       </div>
     </div>
   );
 }
 
-/* SLIDE 4: PROBLEM */
-function SlideProblem() {
-  return (
-    <div style={{ maxWidth:720, width:"100%" }}>
-      <Label>03 The Problem We Solve</Label>
-      <H2>Every calling app today<br/>relies on a server.</H2>
-      <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(11px,1.3vw,13px)", color:"var(--ink-soft)", lineHeight:1.7, marginTop:12, maxWidth:580 }}>
-        To make a call, traditional apps need to verify who you are, route the connection between two people, and deliver the signal in real time. That requires a server sitting in the middle. Which means you need an account, a phone number, or an email tied to their platform just to be reachable.
-      </p>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, marginTop:16 }}>
-        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(12px,1.8vh,20px) clamp(12px,1.6vw,22px)", background:"rgba(10,10,10,0.03)" }}>
-          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>Traditional Apps</p>
-          <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
-            {[
-              "You need a phone number or email to be reachable",
-              "A server connects you to the other person",
-              "The company knows who you call and when",
-              "Your identity lives on their platform, not yours",
-              "They can shut down your account or access at any time",
-            ].map(t => (
-              <div key={t} style={{ display:"flex", gap:10, alignItems:"flex-start" }}>
-                <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"#b91c1c", flexShrink:0, marginTop:1 }}>x</span>
-                <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.5 }}>{t}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div style={{ border:"2px solid var(--ink)", padding:"clamp(12px,1.8vh,20px) clamp(12px,1.6vw,22px)" }}>
-          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>CALLFI</p>
-          <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
-            {[
-              "Your wallet address is your identity, nothing else needed",
-              "The blockchain connects you, no server in the middle",
-              "No company can see your call history or who you contact",
-              "Your identity is on-chain, it belongs to you",
-              "No one can shut down your access or take it away",
-            ].map(t => (
-              <div key={t} style={{ display:"flex", gap:10, alignItems:"flex-start" }}>
-                <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"#1a6b3a", flexShrink:0, marginTop:1 }}>o</span>
-                <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink)", lineHeight:1.5 }}>{t}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* SLIDE 5: WHY SOMNIA */
+/* SLIDE 4: WHY SOMNIA */
 function SlideWhy() {
   return (
     <div style={{ maxWidth:720, width:"100%" }}>
-      <Label>02 Why Somnia</Label>
+      <Label>Why Somnia</Label>
       <H2>Speed is not a feature.<br/>It is the product.</H2>
-      <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(11px,1.3vw,13px)", color:"var(--ink-soft)", lineHeight:1.7, marginTop:12, maxWidth:560 }}>
-        For a call to feel real, the other person has to ring in under 2 seconds. On most chains that is impossible. Your app has to wait for a block, then keep checking if anything changed. That alone takes 10 to 15 seconds. By the time the other person sees the call, the moment is gone. A calling app on those chains is not usable.
-      </p>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, marginTop:14 }}>
-        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(12px,1.8vh,18px) clamp(12px,1.4vw,18px)", background:"rgba(10,10,10,0.03)" }}>
-          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:8 }}>Other Chains</p>
-          <p style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(20px,2.8vw,30px)", fontWeight:900, color:"#b91c1c", marginBottom:6 }}>10 to 15 sec</p>
-          <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.6 }}>
-            App polls the chain repeatedly waiting for the event to land. Slow block times make real-time communication completely unusable.
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, marginTop:18 }}>
+        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,20px)", background:"rgba(10,10,10,0.03)" }}>
+          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>Other Chains</p>
+          <p style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(24px,3vw,36px)", fontWeight:900, color:"#b91c1c", marginBottom:8 }}>10 to 15 sec</p>
+          <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.65 }}>
+            Your app has to keep asking the chain if anything changed. By the time the event arrives, the moment is gone. Real-time communication on these chains is not usable.
           </p>
         </div>
-        <div style={{ border:"2px solid var(--ink)", padding:"clamp(12px,1.8vh,18px) clamp(12px,1.4vw,18px)" }}>
-          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:8 }}>Somnia with Reactivity</p>
-          <p style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(20px,2.8vw,30px)", fontWeight:900, color:"#1a6b3a", marginBottom:6 }}>Under 2 sec</p>
-          <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.6 }}>
-            Somnia Reactivity is a WebSocket built into the protocol. The second a transaction lands, it pushes the event straight to the browser. No polling. No block wait.
+        <div style={{ border:"2px solid var(--ink)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,20px)" }}>
+          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>Somnia with Reactivity</p>
+          <p style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(24px,3vw,36px)", fontWeight:900, color:"#1a6b3a", marginBottom:8 }}>Under 2 sec</p>
+          <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.65 }}>
+            Somnia Reactivity is a WebSocket built into the protocol. The second a transaction lands, it pushes the event straight to the browser. Your browser subscribes. The call arrives.
           </p>
         </div>
       </div>
-      <div style={{ marginTop:12, padding:"clamp(8px,1.2vh,14px) clamp(12px,1.4vw,16px)", background:"rgba(10,10,10,0.04)", borderLeft:"3px solid var(--ink)" }}>
+      <div style={{ marginTop:12, padding:"clamp(10px,1.4vh,16px) clamp(12px,1.4vw,18px)", background:"rgba(10,10,10,0.04)", borderLeft:"3px solid var(--ink)" }}>
         <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1.1vw,12px)", color:"var(--ink)", lineHeight:1.65 }}>
-          <strong>Why speed matters:</strong> A 15 second delay is not a slow app. It is a broken one. Communication only works when it feels instant. Somnia Reactivity is the only reason CALLFI can exist as a real product and not just a concept.
+          Reactivity is the only reason CALLFI exists as a real product. Without it, this is just a concept on a chain that is too slow.
         </p>
       </div>
     </div>
@@ -285,12 +256,12 @@ const featureList = [
   { icon:"◉", title:"On-Chain Call History",  body:"Every call logged permanently on chain. Wallet, duration, status, timestamp." },
   { icon:"◐", title:"Missed Call Recovery",   body:"Come back within 3 minutes and a pending call will still ring. Nothing is lost." },
   { icon:"◑", title:"Zero Data Collected",    body:"No account, no profile, no metadata. Your identity is your wallet, nothing else." },
-  { icon:"◒", title:"Fully Encrypted",        body:"DTLS-SRTP encrypted end to end. Your calls and conversations never leak." },
+  { icon:"◒", title:"Fully Encrypted",        body:"SDP and ICE data encrypted on-chain. DTLS-SRTP for the media stream. Nothing leaks." },
 ];
 function SlideFeatures() {
   return (
     <div style={{ maxWidth:800, width:"100%" }}>
-      <Label>03 Features</Label>
+      <Label>Features</Label>
       <H2>Everything it does.</H2>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:2, marginTop:16 }}>
         {featureList.map(f => (
@@ -309,15 +280,13 @@ function SlideFeatures() {
 function SlideDemo() {
   return (
     <div style={{ position:"fixed", inset:0, display:"flex", flexDirection:"column", background:"var(--ink)" }}>
-      {/* Thin top bar */}
       <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", padding:"10px 20px", flexShrink:0, zIndex:10 }}>
         <div style={{ display:"flex", alignItems:"center", gap:14 }}>
           <span style={{ fontFamily:"var(--font-serif)", fontSize:13, fontWeight:700, color:"var(--cream)" }}>CALLFI</span>
-          <span style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:"0.14em", color:"rgba(231,226,217,0.4)", textTransform:"uppercase" }}>04 Demo</span>
+          <span style={{ fontFamily:"var(--font-mono)", fontSize:10, letterSpacing:"0.14em", color:"rgba(231,226,217,0.4)", textTransform:"uppercase" }}>Demo</span>
         </div>
         <span style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"rgba(231,226,217,0.4)", letterSpacing:"0.06em" }}>Live on Somnia Testnet</span>
       </div>
-      {/* Video fills everything */}
       <div style={{ flex:1, width:"100%", minHeight:0, display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden" }}>
         {/* Replace with: <iframe src="YOUR_EMBED_URL" width="100%" height="100%" frameBorder="0" allowFullScreen style={{ display:"block" }} /> */}
         <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:16 }}>
@@ -339,13 +308,4 @@ function Label({ children }:{ children:React.ReactNode }) {
 }
 function H2({ children }:{ children:React.ReactNode }) {
   return <h2 style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(22px,3vw,36px)", fontWeight:900, lineHeight:1.15, color:"var(--ink)", letterSpacing:"-0.01em" }}>{children}</h2>;
-}
-function Stat({ value, label, body }:{ value:string; label:string; body:string }) {
-  return (
-    <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(12px,1.8vh,20px) clamp(12px,1.6vw,22px)" }}>
-      <div style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(16px,2vw,22px)", fontWeight:900, color:"var(--ink)", marginBottom:2 }}>{value}</div>
-      <div style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.08em", textTransform:"uppercase", marginBottom:6 }}>{label}</div>
-      <div style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.55 }}>{body}</div>
-    </div>
-  );
 }
