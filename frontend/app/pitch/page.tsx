@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 
-const slides = ["cover","intro","how","why","features","demo"];
+const slides = ["cover","why","demo"];
 const totalSlides = slides.length;
 
 export default function PitchDeck() {
@@ -47,12 +47,9 @@ export default function PitchDeck() {
         transition:"opacity 0.3s ease, transform 0.3s ease",
         minHeight:0,
       }}>
-        {current === 0 && <SlideCover    onStart={next} />}
-        {current === 1 && <SlideIntro />}
-        {current === 2 && <SlideHow />}
-        {current === 3 && <SlideWhy />}
-        {current === 4 && <SlideFeatures />}
-        {current === 5 && <SlideDemo />}
+        {current === 0 && <SlideCover onStart={next} />}
+        {current === 1 && <SlideWhy />}
+        {current === 2 && <SlideDemo />}
       </div>
 
       <div style={{
