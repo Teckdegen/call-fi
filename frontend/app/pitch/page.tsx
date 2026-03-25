@@ -215,27 +215,49 @@ function SlideHow() {
   );
 }
 
-/* SLIDE 4: WHY SOMNIA */
+/* SLIDE 2: WHY SOMNIA */
 function SlideWhy() {
   return (
-    <div style={{ maxWidth:720, width:"100%" }}>
+    <div style={{ maxWidth:780, width:"100%" }}>
       <Label>Why Somnia</Label>
       <H2>Speed is not a feature.<br/>It is the product.</H2>
-      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:2, marginTop:18 }}>
-        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,20px)", background:"rgba(10,10,10,0.03)" }}>
+      <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr 1fr", gap:2, marginTop:18 }}>
+
+        {/* How it works */}
+        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,18px)", display:"flex", flexDirection:"column", gap:10 }}>
+          <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase" }}>How It Works</p>
+          <div style={{ display:"flex", flexDirection:"column", gap:10, marginTop:4 }}>
+            {[
+              { n:"01", text:"You make a call. A WebRTC event is created and submitted on-chain." },
+              { n:"02", text:"The receiver's browser is subscribed to on-chain events via Somnia Reactivity." },
+              { n:"03", text:"Reactivity pushes the event the instant it lands. Their phone rings." },
+            ].map(s => (
+              <div key={s.n} style={{ display:"flex", gap:10, alignItems:"flex-start" }}>
+                <span style={{ fontFamily:"var(--font-mono)", fontSize:9, color:"var(--ink-soft)", flexShrink:0, marginTop:2 }}>{s.n}</span>
+                <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink)", lineHeight:1.6 }}>{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Other chains */}
+        <div style={{ border:"1px solid rgba(10,10,10,0.10)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,18px)", background:"rgba(10,10,10,0.03)" }}>
           <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>Other Chains</p>
           <p style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(24px,3vw,36px)", fontWeight:900, color:"#b91c1c", marginBottom:8 }}>10 to 15 sec</p>
           <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.65 }}>
             Your app has to keep asking the chain if anything changed. By the time the event arrives, the moment is gone. Real-time communication on these chains is not usable.
           </p>
         </div>
-        <div style={{ border:"2px solid var(--ink)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,20px)" }}>
+
+        {/* Somnia */}
+        <div style={{ border:"2px solid var(--ink)", padding:"clamp(14px,2vh,22px) clamp(14px,1.5vw,18px)" }}>
           <p style={{ fontFamily:"var(--font-mono)", fontSize:10, color:"var(--ink-soft)", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>Somnia with Reactivity</p>
           <p style={{ fontFamily:"var(--font-serif)", fontSize:"clamp(24px,3vw,36px)", fontWeight:900, color:"#1a6b3a", marginBottom:8 }}>Under 2 sec</p>
           <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1vw,12px)", color:"var(--ink-soft)", lineHeight:1.65 }}>
             Somnia Reactivity is a WebSocket built into the protocol. The second a transaction lands, it pushes the event straight to the browser. Your browser subscribes. The call arrives.
           </p>
         </div>
+
       </div>
       <div style={{ marginTop:12, padding:"clamp(10px,1.4vh,16px) clamp(12px,1.4vw,18px)", background:"rgba(10,10,10,0.04)", borderLeft:"3px solid var(--ink)" }}>
         <p style={{ fontFamily:"var(--font-sans)", fontSize:"clamp(10px,1.1vw,12px)", color:"var(--ink)", lineHeight:1.65 }}>
